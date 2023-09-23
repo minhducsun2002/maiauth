@@ -86,7 +86,7 @@ int main()
             if (re.header["Location"].find("https://maimaidx-eng.com") != std::string::npos)
             {
                 auto c = re.cookies[0].GetValue();
-                auto msg = dpp::message("cảm ơn bạn đã sử dụng dịch vụ của chúng tôi");
+                auto msg = dpp::message("cảm ơn bạn <@" + event.command.get_issuing_user().id.str() + "> đã sử dụng dịch vụ của chúng tôi");
                 msg = msg
                     .add_embed(
                         dpp::embed()
