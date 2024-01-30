@@ -87,18 +87,19 @@ int main()
             {
                 auto c = re.cookies[0].GetValue();
                 auto msg = dpp::message("cảm ơn bạn <@" + event.command.get_issuing_user().id.str() + "> đã sử dụng dịch vụ của chúng tôi");
-                msg = msg
-                    .add_embed(
-                        dpp::embed()
-                            .set_author("lệnh cho full sync dx plus", "", "")
-                            .set_description("m!login " + c)
-                    )
-                    .add_embed(
-                        dpp::embed()
-                            .set_author("lệnh cho mimidx bot", "", "")
-                            .set_description("m>login clal=" + c)
-                    );
+
                 event.edit_original_response(msg);
+                bot.message_create(
+                    dpp::message("m!login " + c)
+                        .set_channel_id(event.command.channel_id)
+                        .set_reference(event.command.message_id)
+                );
+
+                bot.message_create(
+                    dpp::message("m>login clal=" + c)
+                        .set_channel_id(event.command.channel_id)
+                        .set_reference(event.command.message_id)
+                );
             }
             else
             {
