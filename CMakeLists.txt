@@ -8,7 +8,7 @@ pkg_search_module(dpp REQUIRED dpp)
 find_package(OpenSSL REQUIRED)
 find_package(ZLIB REQUIRED)
 include(FetchContent)
-FetchContent_Declare(cpr GIT_REPOSITORY https://github.com/libcpr/cpr.git GIT_TAG 32fd1453194c37d5136577ee55629b863a42333f) # The commit hash for 1.10.x. Replace with the latest from: https://github.com/libcpr/cpr/releases
+FetchContent_Declare(cpr GIT_REPOSITORY https://github.com/libcpr/cpr.git GIT_TAG 3b15fa82ea74739b574d705fea44959b58142eb8) # The commit hash for 1.10.x. Replace with the latest from: https://github.com/libcpr/cpr/releases
 FetchContent_MakeAvailable(cpr)
 
 if (USING_DOCKER MATCHES TRUE)
