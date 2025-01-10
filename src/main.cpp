@@ -90,12 +90,6 @@ int main()
 
                 event.edit_original_response(msg);
                 bot.message_create(
-                    dpp::message("m!login " + c)
-                        .set_channel_id(event.command.channel_id)
-                        .set_reference(event.command.message_id)
-                );
-
-                bot.message_create(
                     dpp::message("m>login clal=" + c)
                         .set_channel_id(event.command.channel_id)
                         .set_reference(event.command.message_id)
