@@ -16,7 +16,7 @@ int main()
     bot.on_log(dpp::utility::cout_logger());
     
     bot.on_message_create([](const dpp::message_create_t& event) {
-        if (event.msg.content == "mai!auth")
+        if (event.msg.content == "mai1!auth")
         {
             dpp::message msg;
             msg.content = "bấm cái nút này đi";
@@ -97,7 +97,19 @@ int main()
             }
             else
             {
+                auto guild = event.command.guild_id.str();
+                auto channel = event.command.channel_id.str();
+                auto author = event.command.get_issuing_user().id.str();
+
+                auto error = re.error.message;
+                auto status = re.status_line;
+
+                auto headers = re.raw_header;
+                auto prelude = "*" + guild + " #" + channel + " @" + author;
+
                 event.edit_original_response(dpp::message("tài khoản của bạn đã bị đánh cắp"));
+                bot.log(dpp::loglevel::ll_warning,prelude + ": status " + status + ", error: " + error);
+                bot.log(dpp::loglevel::ll_warning,prelude + ": headers " + headers);
             }
         }
     });
