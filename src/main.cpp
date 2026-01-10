@@ -16,7 +16,7 @@ int main()
     bot.on_log(dpp::utility::cout_logger());
     
     bot.on_message_create([](const dpp::message_create_t& event) {
-        if (event.msg.content == "mai1!auth")
+        if (event.msg.content == "mai!auth")
         {
             dpp::message msg;
             msg.content = "bấm cái nút này đi";
