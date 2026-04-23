@@ -5,7 +5,7 @@
 const std::string login_button_id = "lmao";
 const std::string form_id = "thatform";
 const std::string login_page_url = "https://lng-tgk-aime-gw.am-all.net/common_auth/login?redirect_url=https%3A%2F%2Fmaimaidx-eng.com%2Fmaimai-mobile%2F&site_id=maimaidxex&back_url=https%3A%2F%2Fmaimai.sega.com%2F";
-const std::string login_endpoint = "https://lng-tgk-aime-gw.am-all.net/common_auth/login/sid/";
+const std::string login_endpoint = "https://lng-tgk-aime-gw.am-all.net/common_auth/login/sid";
 
 int main()
 {
