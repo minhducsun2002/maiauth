@@ -1,6 +1,7 @@
 #include <dpp/dpp.h>
 #include <cpr/cpr.h>
 #include "string"
+#include "algorithm"
 
 const std::string login_button_id = "lmao";
 const std::string form_id = "thatform";
@@ -85,15 +86,23 @@ int main()
             
             if (re.header["Location"].find("https://maimaidx-eng.com") != std::string::npos)
             {
-                auto c = re.cookies[0].GetValue();
-                auto msg = dpp::message("cảm ơn bạn <@" + event.command.get_issuing_user().id.str() + "> đã sử dụng dịch vụ của chúng tôi");
-
-                event.edit_original_response(msg);
-                bot.message_create(
-                    dpp::message("m>login clal=" + c)
-                        .set_channel_id(event.command.channel_id)
-                        .set_reference(event.command.message_id)
+                auto c = std::find_if(
+                    re.cookies.begin(),
+                    re.cookies.end(),
+                    [](const auto& cookie) {
+                        return cookie.GetName() == "clal";
+                    }
                 );
+                if (c != re.cookies.end()) {
+                    auto msg = dpp::message("cảm ơn bạn <@" + event.command.get_issuing_user().id.str() + "> đã sử dụng dịch vụ của chúng tôi");
+
+                    event.edit_original_response(msg);
+                    bot.message_create(
+                        dpp::message("m>login clal=" + c->GetValue())
+                            .set_channel_id(event.command.channel_id)
+                            .set_reference(event.command.message_id)
+                    );
+                }
             }
             else
             {
